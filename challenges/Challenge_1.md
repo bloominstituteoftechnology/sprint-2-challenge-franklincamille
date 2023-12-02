@@ -1,4 +1,4 @@
-# Challenge 1: Profile Activation
+0# Challenge 1: Profile Activation
 
 A company's website has many user profiles. These profiles can either be active (i.e., they can use the website) or inactive. A profile can be set to inactive for a variety of reasons, and the company wants to have the reasons recorded for analytical purposes. If an inactive profile is set back to active, the reason for the inactivity is no longer needed and can be removed.
 

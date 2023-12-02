@@ -7,16 +7,86 @@
   <script id="challenge">
     // 👉 CHALLENGE 1
     function profileActivation(profile, reason) {
+      
+
+      if (profile.active && !reason )  {
+        return "confirm status manually"
+        
+      }
+      else if (profile.active) {
+        profile.active = false
+        profile.reason = reason
+        
+        return profile
+      } 
+      
+      else if (!profile.active) {
+        profile.active = true
+        delete profile.reason
+
+        return profile
+      }
+      
 
     }
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-      
+      let topLeft = (x === 1) && (y === 1); //
+      let topMid =  (x === 2) && (y === 1);
+      let topRight =  (x === 3) && (y === 1); //
+
+      let midLeft = (x === 1) && (y === 2);
+      let midMid =  (x === 2) && (y === 2);
+      let midRight =  (x === 3) && (y === 2);
+
+      let botLeft = (x === 1) && (y === 3);
+      let botMid =  (x === 2) && (y === 3);
+      let botRight = (x === 3) && (y === 3); //
+
+      let mine = "🟥" ;
+      let safe = "🟦";
+
+      for (let i in grid)  {
+        let sq = grid[i]
+
+          if (topLeft || topRight || midMid || midRight || botLeft ) {
+            return "🟥 💀"
+          }
+          else if (topMid || midLeft || botMid || botRight)  {
+            return "🟦 🥳"
+
+          }
+          
+          else if ( (x < 1 || x > 3) || (y < 1 || y > 3) )  {
+            return "invalid coordinates"
+          }
+
+
+      }
+
+
+
+
     }
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
+      for ( let key in obj )  {
+        let subject = obj[key]
+
+        if (subject === 0 ) {
+          subject = false
+        }
+        else if (subject === 1 )  {
+          subject = true
+        }
+        else if (subject === null)  {
+          delete subject
+        }
+
+        
+      }
 
     }
 
