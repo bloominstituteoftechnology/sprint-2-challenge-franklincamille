@@ -72,22 +72,31 @@
 
     // 👉 CHALLENGE 3
     function booleanize(obj) {
-      for ( let key in obj )  {
-        let subject = obj[key]
 
-        if (subject === 0 ) {
-          subject = false
-        }
-        else if (subject === 1 )  {
-          subject = true
-        }
-        else if (subject === null)  {
-          delete subject
+      let objArr = []
+      
+      for (key in obj) {
+        objArr.push(key) // array of obj keys
+
+        if (objArr[0].length >= 9) {
+          return "shorten all prop names to 9 chars or less"
         }
 
-        
+        else if (obj[key] === null) {
+          delete (obj[key])
+        }
+        else if (obj[key] === 0) {
+          obj[key] = false
+          
+        }
+        else if (obj[key] === 1)  {
+          obj[key] = true
+        }
+
+
       }
 
+      return obj
     }
 
     // 👉 CHALLENGE 4
