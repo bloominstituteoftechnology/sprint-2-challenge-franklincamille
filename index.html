@@ -32,41 +32,25 @@
 
     // 👉 CHALLENGE 2
     function mineSweeper(grid, x, y) {
-      let topLeft = (x === 1) && (y === 1); //
-      let topMid =  (x === 2) && (y === 1);
-      let topRight =  (x === 3) && (y === 1); //
-
-      let midLeft = (x === 1) && (y === 2);
-      let midMid =  (x === 2) && (y === 2);
-      let midRight =  (x === 3) && (y === 2);
-
-      let botLeft = (x === 1) && (y === 3);
-      let botMid =  (x === 2) && (y === 3);
-      let botRight = (x === 3) && (y === 3); //
 
       let mine = "🟥" ;
       let safe = "🟦";
 
-      for (let i in grid)  {
-        let sq = grid[i]
+      let lose = "🟥 💀";
+      let win = "🟦 🥳";
 
-          if (topLeft || topRight || midMid || midRight || botLeft ) {
-            return "🟥 💀"
-          }
-          else if (topMid || midLeft || botMid || botRight)  {
-            return "🟦 🥳"
+        if ( (x < 1 || x > 3) || (y < 1 || y > 3) )  {
+          return "invalid coordinates"
+        }
 
-          }
-          
-          else if ( (x < 1 || x > 3) || (y < 1 || y > 3) )  {
-            return "invalid coordinates"
-          }
+        else if (grid[y-1][x-1] === mine ) {
+          return lose
+        }
+        else  {
+          return win
 
-
-      }
-
-
-
+        }
+       
 
     }
 
@@ -101,17 +85,41 @@
 
     // 👉 CHALLENGE 4
     function scrub(text, forbidden) {
- 
+
+      let words = text.split(' ')
+      let result
+
+      for ( let i = 0; i < words.length; i++ )  {
+        if( forbidden.includes(words[i]) )  {
+          words[i] = 'x'.repeat(words[i].length)
+
+        }
+      }
+      result = words.join(' ')
+      
+    
+      return result
+
     }
 
     // 👉 CHALLENGE 5 (bonus, NOT graded)
     function normalizePhoneNumber(num) {
+      
+      let number
 
+      let firstFew = num.slice(0, 3)
+      let midFew = num.slice(3, 6)
+      let lastFew = num.slice(6)
+
+      number = `(${firstFew}) ${midFew}-${lastFew}`;
+
+      return number
+      
     }
 
     // 👉 CHALLENGE 6 (bonus, NOT graded)
     function diceRolls() {
- 
+      
     }
     </script>
 
